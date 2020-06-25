@@ -5,7 +5,7 @@ pygame.init()
 pantalla = pygame.display.set_mode((280, 550))
 reloj = pygame.time.Clock()
 hecho = False
-imagen = pygame.image.load("menu.png")
+imagen = pygame.image.load("img/menu.png")
 
 font = pygame.font.SysFont("quando", 50)
 pygame.display.set_caption("Harry Potter Quidditch")
