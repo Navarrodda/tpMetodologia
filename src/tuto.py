@@ -33,13 +33,21 @@ while not hecho:
             """
         print('Do the job here !')
 
+    def ranking_button():
+        ranking_display = pygame.display.set_mode((280, 550))
+        ranking_brackground = pygame.image.load("img/menu.png")
+        ranking_display.fill((255, 255, 255))
+        ranking_display.blit(text, ((280 - text.get_width()) // 2, (550 - text.get_height()) // 3))
+        ranking_display.blit(ranking_brackground, (0, 0))
 
-    menu = pygame_menu.Menu(height=280,
+
+
+    menu = pygame_menu.Menu(height=550,
                             width=280,
                             title='Harry Potter')
 
     menu.add_button('Play', start_the_game)
-    menu.add_button('Ranking', start_the_game)
+    menu.add_button('Ranking', ranking_button)
     menu.add_button('Quit', pygame_menu.events.EXIT)
     pygame.display.flip()
     if __name__ == '__main__':
