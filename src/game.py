@@ -24,7 +24,7 @@ def draw_text(surface, text, size, x, y):
 def draw_shield_bar(surface, x, y, percentage):
 	BAR_LENGHT = 0
 	BAR_HEIGHT = 0
-	fill = (percentage / 100) * BAR_LENGHT
+	fill = int((percentage / 100) * BAR_LENGHT)
 	border = pygame.Rect(x, y, BAR_LENGHT, BAR_HEIGHT)
 	fill = pygame.Rect(x, y, fill, BAR_HEIGHT)
 	pygame.draw.rect(surface, GREEN, fill)
@@ -103,7 +103,7 @@ class Bullet(pygame.sprite.Sprite):
 
 def show_go_screen():
 	screen.blit(background, [0,0])
-	draw_text(screen, "Press Key", 20, WIDTH // 2, HEIGHT * 3/4)
+	draw_text(screen, "Press Key", 20, WIDTH // 2, int(HEIGHT * 3/4))
 	pygame.display.flip()
 	waiting = True
 	while waiting:
