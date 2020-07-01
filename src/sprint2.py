@@ -71,7 +71,7 @@ def main(test=False):
     clock = pygame.time.Clock()
 
     # -------------------------------------------------------------------------
-    # Create menu: Game
+    # Start Game
     # -------------------------------------------------------------------------
     game_theme = pygame_menu.themes.THEME_DEFAULT.copy()
     game_theme.set_background_color_opacity(0.0)  # 50% opacity
@@ -103,6 +103,7 @@ def main(test=False):
         width=280,
     )
 
+    #   COLUMNA 1
     instructions_menu.add_button(' ', None)
     instructions_menu.add_button(' ', None)
     instructions_menu.add_button(' ', None)
@@ -112,6 +113,8 @@ def main(test=False):
     instructions_menu.add_button(' ', None)
     instructions_menu.add_button(' ', None)
     instructions_menu.add_button('           ', pygame_menu.events.BACK , background_color=background_button_goback)
+
+    #   COLUMNA 2
     instructions_menu.add_button(' ', None)
     instructions_menu.add_button(' ', None)
     instructions_menu.add_button(' ', None)
@@ -120,7 +123,7 @@ def main(test=False):
     instructions_menu.add_button(' ', None)
     instructions_menu.add_button(' ', None)
     instructions_menu.add_button(' ', None)
-    instructions_menu.add_button('           ', game_submenu, background_color=background_button_continue)
+    instructions_menu.add_button('           ', game_submenu , background_color=background_button_continue)
 
     # -------------------------------------------------------------------------
     # Create menus: Main menu
