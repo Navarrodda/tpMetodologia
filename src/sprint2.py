@@ -30,6 +30,22 @@ background_instructions= pygame_menu.baseimage.BaseImage(
     drawing_mode=pygame_menu.baseimage.IMAGE_MODE_FILL
 )
 
+background_game= pygame_menu.baseimage.BaseImage(
+    image_path="img/fondo1.png",
+    drawing_mode=pygame_menu.baseimage.IMAGE_MODE_FILL
+)
+
+background_button_goback= pygame_menu.baseimage.BaseImage(
+    image_path="img/GoBack.png",
+    drawing_mode=pygame_menu.baseimage.IMAGE_MODE_FILL
+)
+
+background_button_continue= pygame_menu.baseimage.BaseImage(
+    image_path="img/Continue.png",
+    drawing_mode=pygame_menu.baseimage.IMAGE_MODE_FILL
+)
+
+
 def main_background():
 
     background_image.draw(surface)
@@ -55,6 +71,21 @@ def main(test=False):
     clock = pygame.time.Clock()
 
     # -------------------------------------------------------------------------
+    # Create menu: Game
+    # -------------------------------------------------------------------------
+    game_theme = pygame_menu.themes.THEME_DEFAULT.copy()
+    game_theme.set_background_color_opacity(0.0)  # 50% opacity
+    game_theme.background_color = background_game
+
+    game_submenu = pygame_menu.Menu(
+        height=550,
+        theme=game_theme,
+        title='',
+        center_content=True,
+        width=280,
+    )
+
+    # -------------------------------------------------------------------------
     # Create menu: Instructions
     # -------------------------------------------------------------------------
     instructions_theme = pygame_menu.themes.THEME_DEFAULT.copy()
@@ -66,20 +97,30 @@ def main(test=False):
         onclose=pygame_menu.events.DISABLE_CLOSE,
         theme=instructions_theme,
         title='',
+        center_content=True,
+        columns=2,
+        rows=9,
         width=280,
     )
 
-    instructions_submenu = pygame_menu.Menu(
-        height=550,
-        theme=instructions_theme,
-        title='',
-        width=280,
-    )
-
-    instructions_submenu.add_button('Return to main menu', pygame_menu.events.RESET)
-
-    instructions_menu.add_button('Continue', instructions_submenu, )
-    instructions_menu.add_button('Go Back', pygame_menu.events.BACK)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button('           ', pygame_menu.events.BACK , background_color=background_button_goback)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button(' ', None)
+    instructions_menu.add_button('           ', game_submenu, background_color=background_button_continue)
 
     # -------------------------------------------------------------------------
     # Create menus: Main menu
