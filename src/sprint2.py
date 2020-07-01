@@ -31,7 +31,7 @@ background_instructions= pygame_menu.baseimage.BaseImage(
 )
 
 background_game= pygame_menu.baseimage.BaseImage(
-    image_path="img/fondo1.png",
+    image_path="img/fondoGame.png",
     drawing_mode=pygame_menu.baseimage.IMAGE_MODE_FILL
 )
 
