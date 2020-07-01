@@ -1,4 +1,3 @@
-
 import sys
 
 sys.path.insert(0, '../../')
@@ -20,27 +19,24 @@ background_image = pygame_menu.baseimage.BaseImage(
     drawing_mode=pygame_menu.baseimage.IMAGE_MODE_FILL
 )
 
-def main_background():
-    """
-    Background color of the main menu, on this function user can plot
-    images, play sounds, etc.
+background_button= pygame_menu.baseimage.BaseImage(
+    image_path="img/StartGame.png",
+    drawing_mode=pygame_menu.baseimage.IMAGE_MODE_FILL
+)
 
-    :return: None
-    """
+background_instructions= pygame_menu.baseimage.BaseImage(
+    image_path="img/Instrucciones.png",
+    drawing_mode=pygame_menu.baseimage.IMAGE_MODE_FILL
+)
+
+def main_background():
+
     background_image.draw(surface)
 
-
 def main(test=False):
-    """
-    Main program.
-
-    :param test: Indicate function is being tested
-    :type test: bool
-    :return: None
-    """
 
     # -------------------------------------------------------------------------
-    # Globals
+    # Global
     # -------------------------------------------------------------------------
     global main_menu
     global sound
@@ -58,20 +54,38 @@ def main(test=False):
     clock = pygame.time.Clock()
 
     # -------------------------------------------------------------------------
+    # Create menu: Instructions
+    # -------------------------------------------------------------------------
+    
+    instructions_theme = pygame_menu.themes.THEME_DEFAULT.copy()
+    instructions_theme.set_background_color_opacity(0.0)  # 50% opacity
+    instructions_theme.background_color=background_instructions
+
+    instructions_menu = pygame_menu.Menu(
+        height=550,
+        onclose=pygame_menu.events.DISABLE_CLOSE,
+        theme=instructions_theme,
+        title='',
+        width=280,
+    )
+
+    # -------------------------------------------------------------------------
     # Create menus: Main menu
     # -------------------------------------------------------------------------
+
     main_menu_theme = pygame_menu.themes.THEME_DEFAULT.copy()
     main_menu_theme.set_background_color_opacity(0.0)  # 50% opacity
 
     main_menu = pygame_menu.Menu(
         height=550,
         width=280,
-        onclose=pygame_menu.events.EXIT,  # User press ESC button
-        title='Epic Menu',
+        onclose=pygame_menu.events.DISABLE_CLOSE,  # User press ESC button
+        title='  ',
+        mouse_enabled=True,
         theme=main_menu_theme,
     )
 
-    main_menu.add_button('Start Game', None)
+    main_menu.add_button('                  ', instructions_menu, background_color=background_button)#StartGameButton
 
     # -------------------------------------------------------------------------
     # Main loop
