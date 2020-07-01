@@ -6,7 +6,7 @@ sys.path.insert(0, '../../')
 import os
 import pygame
 import pygame_menu
-from game import *
+
 
 FPS = 60.0
 WINDOW_SIZE = (280, 550)
